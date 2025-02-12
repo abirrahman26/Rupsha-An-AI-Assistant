@@ -86,7 +86,7 @@ function takeCommand(message){
     else if(message.includes("your brother")){
         speak("I do not have a brother in the traditional sense.")
     }
-    else if(message.includes("you eat")){
+    else if(message.includes("you eat") || message.includes("your food")){
         speak("As a large language model, I don't eat food. I am a computer program that can process information and respond to questions. I can access and process information from the real world through Search Engines.")
     }
     else if(message.includes("i love you")){
