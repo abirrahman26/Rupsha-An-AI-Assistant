@@ -2,14 +2,31 @@ let btn=document.querySelector("#btn")
 let content=document.querySelector("#content")
 let voice=document.querySelector("#voice")
 
-function speak(text){
-   let text_speak=new SpeechSynthesisUtterance(text) 
-   text_speak.rate=1
-   text_speak.pitch=1
-   text_speak.lang="hi-GB";
-   text_speak.volume1
-   window.speechSynthesis.speak(text_speak)
+function speak(text) {
+    let text_speak = new SpeechSynthesisUtterance(text);
+    text_speak.rate = 1;
+    text_speak.pitch = 1;
+    text_speak.volume = 1; // Corrected volume setting
+
+    let voices = window.speechSynthesis.getVoices();
+    
+    // Try setting a female English voice dynamically
+    let femaleVoice = voices.find(voice => voice.name.includes("Female") || voice.name.includes("Google UK English Female") || voice.name.includes("Google US English"));
+
+    if (femaleVoice) {
+        text_speak.voice = femaleVoice;
+    } else {
+        text_speak.lang = "en-US"; // Fallback if no female voice is found
+    }
+
+    window.speechSynthesis.speak(text_speak);
 }
+
+// Load voices properly on mobile
+window.speechSynthesis.onvoiceschanged = () => {
+    speak(""); // Preload voice to avoid lag on first use
+};
+
 
 function wishMe(){
     let day=new Date()
