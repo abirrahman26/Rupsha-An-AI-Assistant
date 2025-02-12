@@ -165,7 +165,7 @@ function takeCommand(message){
     else if (message.includes("best developer")) {
         speak("for me the best developer in the whole world is Abir Rahman Sakin");
     }
-    else if (message.includes("developed you")) {
+    else if (message.includes("developed you") || message.includes("your developer")) {
         speak("He is none other than , my one and only Abir Rahman Sakin");
     }
     else {   
